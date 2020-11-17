@@ -1,61 +1,56 @@
-const signs = [
-  ['(', ')', '%', 'AC'],
-  ['7', '8', '9', '÷'],
-  ['4', '5', '6', '*'],
-  ['1', '2', '3', '-'],
-  ['0', '.', '=', '+'],
-];
+const btn = ['(', ')', '%', 'AC','7', '8', '9', '÷','4', '5', '6', '*','1', '2', '3', '-','0', '.', '=', '+',];
 
 const body = document.querySelector('body');
 
-const container = document.createElement('main');
-container.className = 'container';
+const section = document.createElement('section');
+section.className = 'grid';
+body.appendChild(section);
 
-const section = document.createElement('div');
-section.className = 'section';
+const result = document.createElement('div');
+result.className = 'para';
+section.appendChild(result);
 
-const colonneMax = document.createElement('div');
-colonneMax.className = 'columns is-centered';
+const p2 = document.createElement('p');
+p2.className = 'p2';
+p2.textContent = '0'
+result.appendChild(p2);
 
-const carte = document.createElement('div');
-carte.className = 'card column is-one-fifth is-mobile has-background-black';
+const p = document.createElement('p');
+p.className = 'p';
+p.textContent = '0'
+result.appendChild(p);
 
-const calculResult = document.createElement('div');
-calculResult.className = 'control';
+for (let i = 0; i < btn.length; i++){
+  const bouton = document.createElement('div');
+  bouton.className ='btn';
+  bouton.textContent = btn[i];
+  section.appendChild(bouton);
+}
 
-const input = document.createElement('input');
-input.className = 'input has-text-right has-background-dark has-text-white';
-input.type = 'text';
-input.value = '0';
-input.readOnly = true;
-input.style.fontSize = '20px';
-input.style.fontWeight = 'bold';
 
-const ensembleBoutons = document.createElement('section');
-
-for (let i = 0; i < signs.length; i++) {
-  const div = document.createElement('div');
-  div.className = 'p-1';
-  for (let b = 0; b < signs[i].length; b++) {
-    const bouton = document.createElement('button');
-    bouton.className = 'button is-rounded bouh m-1';
-    bouton.textContent = signs[i][b];
-    div.appendChild(bouton);
-  };
-  ensembleBoutons.appendChild(div);
-};
-
-/* Arborescence */
-body.appendChild(container);
-
-container.appendChild(section);
-
-section.appendChild(colonneMax);
-
-colonneMax.appendChild(carte);
-
-carte.appendChild(calculResult);
-
-calculResult.appendChild(input);
-
-carte.appendChild(ensembleBoutons);
+for (let i of btn){
+  i.addEventListener('click', () => {
+    if (p.textContent === 0 && p2.textContent === 0) {
+      p.textContent = '';
+      p2.textContent = '';
+    }
+    if (i.textContent !== 'AC' && i.textContent !== '=') {
+      if (i.textContent = '%') {
+        p.textContent = String(Number(p.textContent) / 100);
+        p2.textContent = String(Number(p2.textContent) / 100);
+      }
+      else {
+        p.textContent += String(i.textContent);
+        p2.textContent += ' ' + String(i.textContent);
+      }
+    }
+    else if (i.textContent === 'AC') {
+      p.textContent ='0';
+      p2.textContent = '0';
+    }
+    else {
+      p.textContent = safeEval(String(p.textContent));
+      p2.textContent += ' = ' + safeEval(String(p.textContent));
+    }
+  })
+}
