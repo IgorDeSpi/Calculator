@@ -9,6 +9,11 @@ We had three days to make it functional.
 You can see the statement of the exercise [here](https://github.com/becodeorg/bxl-hopper-1-25/tree/master/The%20Hill/projects/1.calculator).  
 This exercise was done during the BeCode web development course.
 
+## Functionalities
+
+- All operators are functioning.
+- I had some trouble assigning keys from the keyboard to the different keys of the calculator.
+- I was unable to prevent the user from putting several '.'.
 ## The result
 
 ![Result](./img/screen.png)  
