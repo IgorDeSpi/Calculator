@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(./img/back.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.grid {
+    width: 250px;
+    margin: 50px auto 0px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 30px);
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    justify-content: center;
+    align-content: center;
+    padding: 10px 0;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background-color:#000000;
+}
+
+.para {
+    grid-column: 1 /  span 4;
+    text-align: right;
+    padding-right: 20px;
+    font-size: 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #cce6db;
+    color: #000000;
+}
+
+.p {
+    font-size: 24px;
+}
+
+.p2 {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+}
+
+.btn {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.btn:nth-child(2),
+.btn:nth-child(3),
+.btn:nth-child(4){
+    background-color: #a5a5a5;
+    color: rgb(0, 0, 0);
+}
+.btn:nth-child(5),
+.btn:nth-child(9),
+.btn:nth-child(13),
+.btn:nth-child(17),
+.btn:nth-child(21) {
+    background-color: #ff9f0a;
+    color: #fff;
+}
+
+.btn:nth-child(20) {
+    background-color: #145bc5;
+    color: #fff;
+}
